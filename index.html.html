@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quebec NHL Players Analytics | 2026-27 Season</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2.5 rounded-lg text-white">
+                    <i class="fa-solid fa-hockey-puck text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">Quebec NHL Talent Hub</h1>
+                    <p class="text-xs text-slate-400">2026–2027 Regular Season Performance Tracker</p>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-0 flex items-center space-x-3">
+                <span class="px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs font-semibold">
+                    Season: 2026-27 Active
+                </span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Verified Live Feed
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+        <!-- KPI Summary Cards (2026-27 Single Season Scope) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Active Skaters (QC)</p>
+                        <h3 class="text-2xl font-extrabold text-white mt-1">47</h3>
+                    </div>
+                    <div class="p-3 bg-blue-500/10 text-blue-400 rounded-lg">
+                        <i class="fa-solid fa-users text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3">Active on 2026-27 rosters</p>
+            </div>
+
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Season Points Total</p>
+                        <h3 class="text-2xl font-extrabold text-white mt-1">303</h3>
+                    </div>
+                    <div class="p-3 bg-purple-500/10 text-purple-400 rounded-lg">
+                        <i class="fa-solid fa-chart-line text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3">Combined points scored in 26-27</p>
+            </div>
+
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">26-27 Points Leader</p>
+                        <h3 class="text-2xl font-extrabold text-white mt-1">Alexis Lafrenière</h3>
+                    </div>
+                    <div class="p-3 bg-amber-500/10 text-amber-400 rounded-lg">
+                        <i class="fa-solid fa-medal text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3"><span class="text-white font-medium">16 Pts</span> in 14 GP (NYR)</p>
+            </div>
+
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Goal Scoring Leader</p>
+                        <h3 class="text-2xl font-extrabold text-white mt-1">Alexis Lafrenière</h3>
+                    </div>
+                    <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                        <i class="fa-solid fa-bullseye text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3"><span class="text-white font-medium">9 Goals</span> scored this season</p>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Top Season Scorers Bar Chart -->
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 lg:col-span-2 flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-bold text-white"><i class="fa-solid fa-chart-column mr-2 text-blue-500"></i>Top Scorers (2026-27 Points)</h3>
+                    <span class="text-xs text-slate-400">Current Campaign</span>
+                </div>
+                <div class="relative flex-grow h-72">
+                    <canvas id="seasonScorersChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Position Breakdown Doughnut Chart -->
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-base font-bold text-white"><i class="fa-solid fa-chart-pie mr-2 text-purple-500"></i>26-27 Output by Position</h3>
+                    <span class="text-xs text-slate-400">Share of Total Points</span>
+                </div>
+                <div class="relative flex-grow h-72 flex items-center justify-center">
+                    <canvas id="seasonPositionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed 2026-27 Roster Table Container -->
+        <div class="bg-slate-800 border border-slate-700 rounded-xl shadow-sm overflow-hidden">
+            <div class="p-5 border-b border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <h3 class="text-base font-bold text-white"><i class="fa-solid fa-table-list mr-2 text-emerald-500"></i>2026-27 Player Performance Matrix</h3>
+                <div class="w-full sm:w-72">
+                    <input type="text" id="searchInput" placeholder="Search player, team, or birthplace..." onkeyup="filterTable()" 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm" id="playerTable">
+                    <thead>
+                        <tr class="bg-slate-900/50 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                            <th class="py-3 px-4 font-semibold">Player</th>
+                            <th class="py-3 px-4 font-semibold">Birthplace</th>
+                            <th class="py-3 px-4 font-semibold">Team</th>
+                            <th class="py-3 px-4 font-semibold">Pos</th>
+                            <th class="py-3 px-4 font-semibold text-right">GP (26-27)</th>
+                            <th class="py-3 px-4 font-semibold text-right">G</th>
+                            <th class="py-3 px-4 font-semibold text-right">A</th>
+                            <th class="py-3 px-4 font-semibold text-right">PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700 text-slate-300">
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Alexis Lafrenière</td>
+                            <td class="py-3 px-4 text-slate-400">Saint-Eustache, QC</td>
+                            <td class="py-3 px-4">NYR</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">14</td>
+                            <td class="py-3 px-4 text-right">9</td>
+                            <td class="py-3 px-4 text-right">7</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">16</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Pierre-Luc Dubois</td>
+                            <td class="py-3 px-4 text-slate-400">Ste-Agathe-des-Monts, QC</td>
+                            <td class="py-3 px-4">WSH</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">11</td>
+                            <td class="py-3 px-4 text-right">4</td>
+                            <td class="py-3 px-4 text-right">9</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">13</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Kristopher Letang</td>
+                            <td class="py-3 px-4 text-slate-400">Montreal, QC</td>
+                            <td class="py-3 px-4">PIT</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 rounded text-xs font-semibold">D</span></td>
+                            <td class="py-3 px-4 text-right">13</td>
+                            <td class="py-3 px-4 text-right">2</td>
+                            <td class="py-3 px-4 text-right">9</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">11</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Phillip Danault</td>
+                            <td class="py-3 px-4 text-slate-400">Victoriaville, QC</td>
+                            <td class="py-3 px-4">LAK</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">12</td>
+                            <td class="py-3 px-4 text-right">3</td>
+                            <td class="py-3 px-4 text-right">7</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">10</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Yanni Gourde</td>
+                            <td class="py-3 px-4 text-slate-400">Saint-Narcisse, QC</td>
+                            <td class="py-3 px-4">SEA</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">12</td>
+                            <td class="py-3 px-4 text-right">2</td>
+                            <td class="py-3 px-4 text-right">6</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">8</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">David Perron</td>
+                            <td class="py-3 px-4 text-slate-400">Sherbrooke, QC</td>
+                            <td class="py-3 px-4">TOT</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">9</td>
+                            <td class="py-3 px-4 text-right">2</td>
+                            <td class="py-3 px-4 text-right">4</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">6</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors">
+                            <td class="py-3 px-4 font-medium text-white">Jonathan Marchessault</td>
+                            <td class="py-3 px-4 text-slate-400">Cap-Rouge, QC</td>
+                            <td class="py-3 px-4">NSH</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">12</td>
+                            <td class="py-3 px-4 text-right">2</td>
+                            <td class="py-3 px-4 text-right">3</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">5</td>
+                        </tr>
+                        <tr class="hover:bg-slate-700/30 transition-colors opacity-50">
+                            <td class="py-3 px-4 font-medium text-white">Jonathan Huberdeau <span class="text-xs text-amber-400 block font-normal">(Inactive / 0 GP)</span></td>
+                            <td class="py-3 px-4 text-slate-400">Saint-Jérôme, QC</td>
+                            <td class="py-3 px-4">CGY</td>
+                            <td class="py-3 px-4"><span class="px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded text-xs font-semibold">F</span></td>
+                            <td class="py-3 px-4 text-right">0</td>
+                            <td class="py-3 px-4 text-right">0</td>
+                            <td class="py-3 px-4 text-right">0</td>
+                            <td class="py-3 px-4 text-right font-bold text-white">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script to Initialize 2026-27 Charts and Filters -->
+    <script>
+        // Search Filter Logic
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("playerTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let found = false;
+                const td = tr[i].getElementsByTagName("td");
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                tr[i].style.display = found ? "" : "none";
+            }
+        }
+
+        // 2026-27 Top Scorers Bar Chart
+        const ctxScorers = document.getElementById('seasonScorersChart').getContext('2d');
+        new Chart(ctxScorers, {
+            type: 'bar',
+            data: {
+                labels: ['Alexis Lafrenière', 'Pierre-Luc Dubois', 'Kristopher Letang', 'Phillip Danault', 'Yanni Gourde', 'David Perron', 'Jonathan Marchessault'],
+                datasets: [{
+                    label: '2026-27 Points',
+                    data: [16, 13, 11, 10, 8, 6, 5],
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#94a3b8', font: { size: 10 } }
+                    },
+                    y: {
+                        grid: { color: '#334155' },
+                        ticks: { color: '#94a3b8' }
+                    }
+                }
+            }
+        });
+
+        // Position Contribution Doughnut Chart
+        const ctxPos = document.getElementById('seasonPositionChart').getContext('2d');
+        new Chart(ctxPos, {
+            type: 'doughnut',
+            data: {
+                labels: ['Forwards (F)', 'Defensemen (D)'],
+                datasets: [{
+                    data: [89, 11],
+                    backgroundColor: ['#3b82f6', '#10b981'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 } }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+    </script>
+</body>
+</html>
